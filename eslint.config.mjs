@@ -21,20 +21,29 @@ export default [
           allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
           depConstraints: [
             {
-              sourceTag: 'scope:shared',
-              onlyDependOnLibsWithTags: ['scope:shared'],
+              sourceTag: 'scope:reservation',
+              onlyDependOnLibsWithTags: ['scope:reservation'],
             },
             {
-              sourceTag: 'scope:shop',
-              onlyDependOnLibsWithTags: ['scope:shop', 'scope:shared'],
+              sourceTag: 'type:util',
+              onlyDependOnLibsWithTags: ['type:util'],
             },
             {
-              sourceTag: 'scope:api',
-              onlyDependOnLibsWithTags: ['scope:api', 'scope:shared'],
+              sourceTag: 'type:ui',
+              onlyDependOnLibsWithTags: ['type:ui', 'type:util'],
             },
             {
-              sourceTag: 'type:data',
-              onlyDependOnLibsWithTags: ['type:data'],
+              sourceTag: 'type:feature',
+              onlyDependOnLibsWithTags: ['type:data', 'type:ui', 'type:util'],
+            },
+            {
+              sourceTag: 'type:app',
+              onlyDependOnLibsWithTags: [
+                'type:data',
+                'type:ui',
+                'type:util',
+                'type:feature',
+              ],
             },
           ],
         },

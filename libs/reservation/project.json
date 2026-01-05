@@ -1,0 +1,13 @@
+{
+  "name": "reservation",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "reservation/src",
+  "prefix": "reservation",
+  "projectType": "library",
+  "tags": ["scope:reservation", "type:feature"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
