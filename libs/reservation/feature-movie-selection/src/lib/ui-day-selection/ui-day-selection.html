@@ -1,0 +1,64 @@
+<div class="day-selection">
+  <h2
+    id="week-label"
+    class="day-selection__title">This Week</h2>
+  <div
+    ngCombobox
+    readonly
+    class="day-selection__select"
+  >
+    <div #daySelection
+         class="day-selection__select-trigger">
+      <span
+        id="day-value"
+        class="day-selection__select-value"
+      >
+        {{ day() }}
+      </span>
+      <input
+        aria-labelledby="week-label day-value"
+        ngComboboxInput
+        class="day-selection__select-input" />
+      <span
+        class="day-selection__select-arrow"
+        aria-hidden="true">
+        ▼
+      </span>
+    </div>
+
+    <ng-template ngComboboxPopupContainer>
+      <ng-template
+        [cdkConnectedOverlay]="{origin: daySelection, usePopover: 'inline', matchWidth: true}"
+        [cdkConnectedOverlayOpen]="true">
+        <div class="day-selection__select-popup">
+          <div
+            ngListbox
+            [(values)]="selectedDay"
+            class="day-selection__select-listbox"
+          >
+            @for (day of days(); track day.value) {
+              <div
+                ngOption
+                [value]="day.value"
+                [label]="day.label"
+                [disabled]="day.disabled ?? false"
+                class="day-selection__select-option">
+                <span class="day-selection__select-option-day">
+                  {{ day.dayName }}
+                </span>
+                <span class="day-selection__select-option-date">
+                  {{ day.label }}
+                </span>
+                <span
+                  class="day-selection__select-option-check"
+                  aria-hidden="true">
+                  ✓
+                </span>
+              </div>
+            }
+          </div>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>

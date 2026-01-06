@@ -13,6 +13,7 @@ export function getDateForDayOfWeek(dayOfWeek: number, fromDate?: Date): Date {
 
 export function generateWeekDays(
   currentDay?: Date,
+  disabledDates?: Date[] | string[],
 ): DayOption[] {
   const days: DayOption[] = [];
   const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -21,6 +22,10 @@ export function generateWeekDays(
   const todayDayIndex = today.getDay();
   const daysUntilSunday = todayDayIndex === 0 ? 0 : 7 - todayDayIndex;
 
+  const normalizedDisabledDates: Date[] = disabledDates
+    ? disabledDates.map((d) => (typeof d === 'string' ? new Date(d) : d))
+    : [];
+
   for (let i = 0; i <= daysUntilSunday; i++) {
     const date = new Date(today);
     date.setDate(today.getDate() + i);
@@ -28,11 +33,18 @@ export function generateWeekDays(
     const dayName = dayNames[date.getDay()];
     const day = date.getDate();
     const month = date.toLocaleString('en-US', { month: 'short' });
+    const dateString = date.toISOString().split('T')[0];
+
+    const isDisabled = normalizedDisabledDates.some((disabledDate) => {
+      const disabledDateString = disabledDate.toISOString().split('T')[0];
+      return disabledDateString === dateString;
+    });
 
     days.push({
-      value: date.toISOString().split('T')[0],
+      value: dateString,
       label: `${day} ${month}`,
       dayName: dayName,
+      disabled: isDisabled,
     });
   }
 
