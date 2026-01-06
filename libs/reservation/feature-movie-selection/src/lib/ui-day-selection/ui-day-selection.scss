@@ -1,0 +1,154 @@
+@import '../util-styles/_variables';
+
+.day-selection {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  &__title {
+    font-size: 1.125rem;
+    color: white;
+  }
+
+  &__select {
+    position: relative;
+
+    &:focus-within .day-selection__select-trigger {
+      border-color: $accent;
+      box-shadow: 0 0 0 3px $accent-glow;
+    }
+
+    &-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.625rem 1rem;
+      background: $bg-card;
+      border: 1px solid $border-color;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      min-width: 180px;
+      transition:
+        border-color $transition,
+        background-color $transition,
+        box-shadow $transition;
+
+      &:hover {
+        background: $bg-card-hover;
+        border-color: $accent;
+      }
+    }
+
+    &-value {
+      flex: 1;
+      color: $text-primary;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    &-input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+
+    &-arrow {
+      color: $text-secondary;
+      font-size: 0.65rem;
+      transition: transform $transition;
+    }
+
+    &-popup {
+      margin-top: 0.5rem;
+      background: #1a1a2e;
+      border: 1px solid $border-color;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+      width: 100%;
+      transition:
+        opacity 0.15s ease-out,
+        visibility 0s;
+    }
+
+    &-listbox {
+      display: flex;
+      flex-direction: column;
+    }
+
+      &-option {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        transition: background-color $transition;
+
+        &:hover:not([aria-disabled='true']) {
+          background: $bg-card-hover;
+        }
+
+        &[data-active='true']:not([aria-disabled='true']) {
+          background: $bg-card-hover;
+          outline: 2px solid $accent;
+          outline-offset: -2px;
+        }
+
+        &[aria-disabled='true'] {
+          opacity: 0.5;
+          cursor: not-allowed;
+          pointer-events: none;
+
+          .day-selection__select-option-day,
+          .day-selection__select-option-date {
+            color: $text-secondary;
+          }
+        }
+
+        &[aria-selected='true'] {
+          background: rgba(233, 69, 96, 0.1);
+
+          .day-selection__select-option-day,
+          .day-selection__select-option-date {
+            color: $accent-light;
+          }
+
+          .day-selection__select-option-check {
+            opacity: 1;
+          }
+        }
+
+      &-day {
+        font-weight: 600;
+        color: $text-primary;
+        min-width: 70px;
+      }
+
+      &-date {
+        flex: 1;
+        color: $text-secondary;
+      }
+
+      &-check {
+        color: $accent;
+        font-size: 1rem;
+        opacity: 0;
+        transition: opacity $transition;
+      }
+    }
+  }
+}
+
+[ngComboboxInput][aria-expanded='true'] ~ .day-selection__select-arrow {
+  transform: rotate(180deg);
+}
+
+[ngCombobox]:has([ngComboboxInput][aria-expanded='false']) .day-selection__select-popup {
+  display: none;
+}
