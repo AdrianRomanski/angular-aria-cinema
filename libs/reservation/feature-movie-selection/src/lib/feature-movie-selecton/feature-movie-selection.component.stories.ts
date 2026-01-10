@@ -9,6 +9,6 @@ export default meta;
 
 type Story = StoryObj<FeatureMovieSelection>;
 
-export const Primary: Story = {
+export const MovieSelection: Story = {
   args: {},
 };
