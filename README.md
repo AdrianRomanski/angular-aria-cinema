@@ -37,6 +37,31 @@ Each exercise lives on its own Git branch and follows the same structure:
 
 ---
 
+## 🎨 Chromatic Previews
+
+This project uses **Chromatic** to showcase accessible UI states and interactions visually.
+
+Chromatic allows you to explore the components **without running the app locally**, making it easier to review layout, states, and visual behavior alongside the exercises.
+
+### Available Instances
+
+- **Main branch**  
+  https://696220fa05c327809bcea813-qqrvwlisye.chromatic.com/
+
+- **Exercise 1 – Finished solution (`part-1-finish`)**  
+  https://696220fa05c327809bcea813-nuqkbeltit.chromatic.com/
+
+These previews are especially useful for:
+- Reviewing component structure and states
+- Verifying visual consistency across exercises
+- Discussing UI decisions independently from implementation
+- Pairing visual review with keyboard and screen reader testing
+
+> ⚠️ Note: Chromatic previews focus on visual output.  
+> For full accessibility verification, always test with **keyboard navigation** and **screen readers** (VoiceOver / NVDA).
+
+---
+
 ### Part 1 — Day Selection (Combobox + Listbox)
 
 **Feature:**  
