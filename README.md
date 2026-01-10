@@ -26,8 +26,9 @@ It’s about building **inclusive UI flows from the start**.
 git clone https://github.com/AdrianRomanski/angular-aria-cinema.git
 cd angular-aria-cinema
 yarn install
+```
 
-## 🧩 Exercises & Branches
+## Exercises & Branches
 
 Each exercise lives on its own Git branch and follows the same structure:
 
