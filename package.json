@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start-cinema": "nx run cinema:serve",
-    "storybook-reservation": "nx run reservation:storybook"
+    "storybook-reservation": "nx run reservation:storybook",
+    "build-storybook": "nx run reservation:build-storybook"
   },
   "private": true,
   "dependencies": {
